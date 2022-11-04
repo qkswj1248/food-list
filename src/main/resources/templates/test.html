@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <style>
+        table, td, th{ border:1px solid gray; }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-$END$
+<form id="studentForm" action="" >
+    <table>
+        <thead>
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>학교</th>
+        </tr>
+        <tr>
+            <td><input name = "name" id="name" placeholder="name"/></td>
+            <td><input name = "age" id="age" placeholder="age"/></td>
+            <td><input name = "shcoolName" id="schoolName" placeholder="schoolName"/></td>
+        </tr>
+    </table>
+    <a href="#" id="submitBtn"  onclick="javascript:submit();">submit</a>
+</form>
 </body>
+
+
+<script>
+    function submit(){
+        callAjax('rest/dashboard/addStudent','post','studentForm', '');
+    }
+
+    //TODO ajax 호출 공통
+    function callAjax(callUrl, callType, callFormName, successFunction){
+        blur();
+        $.ajax({
+            url      : callUrl,
+            type     : callType,
+            data     : $('#' + callFormName).serialize(),
+            dataType : 'json',
+            success  : function(data){
+            }
+        });
+    }
+</script>
 </html>

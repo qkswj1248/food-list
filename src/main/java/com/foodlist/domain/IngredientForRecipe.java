@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter @Setter
 public class IngredientForRecipe {
-    private int ingredientId;
-    private int recipeId;
+
+    private IngredientForRecipeId ir_id;
     private String amount;
 }
