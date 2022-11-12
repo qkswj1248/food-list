@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="navbar">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+    <a class="navbar-brand" href="../../basic_resource/html" id="navbar-brand">singterior</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbar-main" class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <div th:if="${member}">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./login.html">로그인</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./join.html">회원가입</a>
+                </li>
+            </div>
+            <div th:unless="${member}">
+                <div th:if="${member.id == 'foodmg'}">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./AdminForm.jsp">관리페이지</a>
+                    </li>
+                </div>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./FavoriteControl.do">관심상품</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./LogOutControl.do">로그아웃</a>
+                </li>
+                <li id="nav-hello"><span>${sessionScope.user.name } 님 환영합니다^^</span></li>
+            </div>
+        </ul>
+        <div class="my-2 my-lg-0" id="nav-search">
+            <form class="form-inline" action="ProductListControl.do" method="post">
+                <input class="form-control mr-sm-2" type="search" placeholder="내용을 입력하세요." aria-label="Search" name="search-text">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+            </form>
+        </div>
+    </div>
+</nav>
+</div>

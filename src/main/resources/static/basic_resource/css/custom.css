@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+@import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Tiro+Gurmukhi:ital@1&display=swap');
+
+h1, h2, h3, h4 {
+    font-family: 'Jeju Gothic', sans-serif;
+}
+.navbar-brand {
+    font-family: 'Tiro Gurmukhi', serif;
+}
+.page-en-title {
+    font-family: 'Tiro Gurmukhi', serif;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 2.0rem 0;
+    display: block;
+}
+h5{
+    font-family: 'Jeju Gothic', sans-serif;
+    font-size: 18px;
+}
+body {
+    font-family: 'Nanum Gothic', sans-serif;;
+}

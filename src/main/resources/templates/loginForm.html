@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragment/head.html :: html-head"></head>
+<body>
+<!--<div th:replace="/fragment/navbar.html :: navbar"></div>-->
+
+<div class="page-en-title">Login</div>
+
+<div class="login-center">
+    <form action="/login" method="post">
+        <input type="text" name="username">
+        <input type="text" name="password">
+        <input type="submit" value="로그인">
+    </form>
+    <!--<button type="button" onClick="location.href='JoinForm.jsp'">가입하기</button>-->
+</div>
+
+<div th:replace="/fragment/footer.html :: footer"></div>
+</body>
+</html>

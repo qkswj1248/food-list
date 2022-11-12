@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragment/head.html :: html-head"></head>
+<body>
+<!--<div th:replace="/fragment/navbar.html :: navbar"></div>-->
+
+<div class="page-en-title">Join</div>
+
+<div class="join-center">
+    <form action="/join" th:object="${member}" method="post">
+        <table>
+            <tr height="40">
+                <td th:width="150"> 이름 </td>
+                <td th:width="350"><input type="text" th:field="*{name}" size="20"></td>
+            </tr>
+            <tr height="40">
+                <td th:width="150"> 아이디 </td>
+                <td th:width="350"><input type="text" th:field="*{id}" size="20" placeholder="id를 입력하세요."></td>
+            </tr><!-- size는 text박스의 width를 늘려준다. td의 width는 뭐하는지 모르겠다. -->
+            <tr height="40">
+                <td th:width="150"> 비밀번호 </td>
+                <td th:width="350"><input type="password" th:field="*{password}"
+                                       size="30" placeholder="비밀번호는 영문과 숫자만 입력해주세요."></td>
+            </tr>
+<!--            <tr height="40"> &lt;!&ndash; 나중에 구현 &ndash;&gt;-->
+<!--                <td th:width="150"> 비밀번호 확인 </td>-->
+<!--                <td th:width="350"><input type="password" name="pw2" size="30"></td>-->
+<!--            </tr>-->
+            <tr height="40">
+                <td colspan="2">
+                    <input type="submit" value="회원가입">
+                    <input type="submit" value="취소">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div th:replace="/fragment/footer.html :: footer"></div>
+</body>
+</html>
