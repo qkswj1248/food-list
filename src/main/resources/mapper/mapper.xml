@@ -6,7 +6,13 @@
     <select id="findAll" resultType="com.foodlist.domain.Member">
         select * from member
     </select>
-    <select id="insert" parameterType="com.foodlist.domain.Member">
-        INSERT INTO MEMBER VALUES (#{id}, #{name}, #{password})
+
+    <select id="findById" parameterType="String" resultType="com.foodlist.domain.Member">
+        select id, name, password, email, nickname from member where id = #{id}
     </select>
+
+    <select id="insert" parameterType="com.foodlist.domain.Member">
+        INSERT INTO MEMBER VALUES (#{id}, #{name}, #{password}, #{email}, #{nickname})
+    </select>
+
 </mapper>

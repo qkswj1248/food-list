@@ -1,0 +1,30 @@
+# mysql
+#spring.datasource.hikari.jdbc-url=url: jdbc:mysql://localhost:3306/foodlist?characterEncoding=utf8
+#spring.datasource.hikari.username=: root
+#spring.datasource.hikari.password=: 1234
+#spring.datasource.hikari.driver-class-name=: com.mysql.cj.jdbc.Driver
+#spring.datasource.mapper-locations=classpath:/mapper/**/*.xml
+
+#spring.datasource.url=jdbc:mysql://localhost:3306/foodlist?autoReconnect=true&serverTimezone=UTC
+#spring.datasource.username=qksqks
+#spring.datasource.password=ban422
+#spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+#mybatis.mapper-locations:classpath:mapper/*.xml
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/foodlist?autoReconnect=true&serverTimezone=UTC
+    username: qksqks
+    password: ban422
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+# 토른 암복호화를 위한 키로 HS256 알고리즘을 쓰기 위해 256비트보다 커야한다.(32글자 이상)
+jwt:
+  secret: VlwEyVBsYt9V7zq57TejMnVUyzblYcfPQye08f7MGVA9XkHa
+
+property:
+  test:
+    name: property depth test

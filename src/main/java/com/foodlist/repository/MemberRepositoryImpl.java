@@ -1,6 +1,7 @@
 package com.foodlist.repository;
 
 import com.foodlist.domain.Member;
+import com.foodlist.mapper.MemberMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     @Override
     public Member findById(int memberId) {
+
         return null;
     }
 
@@ -22,4 +24,6 @@ public class MemberRepositoryImpl implements MemberRepository {
 
         return null;
     }
+
+
 }

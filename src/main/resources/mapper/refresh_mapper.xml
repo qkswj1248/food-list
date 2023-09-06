@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.foodlist.mapper.RefreshTokenMapper">
+    <select id="getRefreshToken" parameterType="String" resultType="String">
+        select token from refresh_token where token = #{token};
+    </select>
+
+    <insert id="addRefreshToken" parameterType="String">
+        insert into refresh_token values (#{token});
+    </insert>
+</mapper>

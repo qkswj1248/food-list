@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.foodlist.mapper.RefrigeMapper">
+    <select id="findAll" resultType="com.foodlist.domain.Refrige">
+        select ingredient_id, shelf_life, img, amount
+        from refrige  where member_id = #{id};
+    </select>
+</mapper>
