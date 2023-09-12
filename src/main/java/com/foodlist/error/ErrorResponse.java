@@ -39,8 +39,8 @@ public class ErrorResponse {
     // requiredArgs는 fianl이나 NonNull 붙은 필드에 DI를 해준다.
     // 여기서 에러메시지를 돌려주면 프론트는 어떤식으로 받게되지?
     private final int code;
-    private final String error;
     private final String message;
+    private final String data;
 
     // null 값이나 length 가 0인 값들을 제외시키도록 조정할 수 있는 어노테이션
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -48,22 +48,22 @@ public class ErrorResponse {
 
     public static ResponseEntity<ErrorResponse> toCustomResponseEntity(ErrorCode errorCode){
         return ResponseEntity
-                .status(errorCode.getCode())
+                .status(404)
                 .body(ErrorResponse.builder()
                         .code(errorCode.getCode())
-                        .error(errorCode.name())
                         .message(errorCode.getMessage())
+                        .data(errorCode.name())
                         .build()
                 );
     }
 
     public static ResponseEntity<ErrorResponse> toResponseEntity(ErrorCode errorCode, String e){
         return ResponseEntity
-                .status(errorCode.getCode())
+                .status(404)
                 .body(ErrorResponse.builder()
                         .code(errorCode.getCode())
-                        .error(errorCode.name())
                         .message(errorCode.getMessage())
+                        .data(errorCode.name())
                         .detail(e)
                         .build()
                 );

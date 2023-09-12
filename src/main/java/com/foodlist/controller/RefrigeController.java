@@ -1,11 +1,8 @@
 package com.foodlist.controller;
 
-import com.foodlist.domain.LoginMember;
 import com.foodlist.domain.Refrige;
 import com.foodlist.security.JwtTokenProvider;
-import com.foodlist.security.TokenInfo;
 import com.foodlist.service.RefrigeService;
-import com.foodlist.service.SecurityService;
 import com.foodlist.util.Message;
 import com.foodlist.util.SuccessCode;
 import io.jsonwebtoken.Claims;
@@ -14,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -45,7 +41,7 @@ public class RefrigeController {
 
         // body 구성
         Message message = new Message();
-        message.setStatus(SuccessCode.OK.getHttpStatus().value());
+        message.setCode(SuccessCode.OK.getHttpStatus().value());
         message.setMessage("재료 가져오기 성공");
         message.setData(all);
 

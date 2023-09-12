@@ -22,13 +22,13 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     // 내가 설정한 예외를 잡아서 처리
     @ExceptionHandler(CustomException.class)
-    public ResponseEntity<ErrorResponse> handleCustomException(CustomException e){
+    private ResponseEntity<ErrorResponse> handleCustomException(CustomException e){
         ErrorCode errorCode = e.getErrorCode();
         return ErrorResponse.toCustomResponseEntity(errorCode);
     }
 
     @ExceptionHandler(TestException.class)
-    public ResponseEntity<ErrorResponse> handleTestException(TestException e){
+    private ResponseEntity<ErrorResponse> handleTestException(TestException e){
         ErrorCode errorCode = e.getErrorCode();
         return ErrorResponse.toResponseEntity(errorCode, e.getError());
     }
@@ -37,14 +37,14 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     // illegal 은 적절하지 못한 인자를 메소드에 넘겨주었을 때 발생한다.
     // @Valid에 의한 유효성 검증에 실패했을 때 발생함(??)
     @ExceptionHandler(IllegalAccessException.class)
-    public ResponseEntity<ErrorResponse> handleIllegalArgument(IllegalAccessException e){
+    private ResponseEntity<ErrorResponse> handleIllegalArgument(IllegalAccessException e){
         log.warn("handleIllegalArgument", e);
         ErrorCode errorCode = CommonErrorCode.INVALID_PARAMETER;
         return ErrorResponse.toResponseEntity(errorCode, e.getMessage());
     }
 
     @ExceptionHandler(SQLException.class)
-    public ResponseEntity<ErrorResponse> handleSQLException(SQLException e){
+    private ResponseEntity<ErrorResponse> handleSQLException(SQLException e){
         log.warn("handleSQLException", e);
         ErrorCode errorCode = CommonErrorCode.SQL_ERROR;
         return ErrorResponse.toResponseEntity(errorCode, e.getMessage());

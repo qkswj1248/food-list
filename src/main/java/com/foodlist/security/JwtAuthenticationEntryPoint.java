@@ -25,7 +25,6 @@ import java.util.Map;
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-        String exception = (String)request.getAttribute("exception");
         System.out.println("entry porint 왔음");
         System.out.println("auth exception");
         System.out.println(authException);
@@ -38,6 +37,8 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
             setResponse(response, SecurityErrorCode.UNKNOWN_ERROR);
         }
 
+        System.out.println("뭐가 문제지");
+
     }
 
     private void setResponse(HttpServletResponse response, ErrorCode code) throws IOException {
@@ -46,8 +47,8 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
         Map<String, Object> data = new HashMap<>();
         data.put("code", code.getCode());
-        data.put("error", code.name());
         data.put("message", code.getMessage());
+        data.put("data", code.name());
 
         /*
         와아악 에러 해결했다 ObjectMapper writeValue 랑 response.write()

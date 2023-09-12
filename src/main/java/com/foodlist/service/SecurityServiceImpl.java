@@ -38,18 +38,24 @@ public class SecurityServiceImpl implements SecurityService{
     */
     @Override
     public TokenInfo createToken(LoginMember loginMember) {
+        System.out.println("mathod : SecurityServiceImpl.createToken");
         // Authentication 객체 생성
         UsernamePasswordAuthenticationToken authenticationToken
                 = new UsernamePasswordAuthenticationToken(loginMember.getId(), loginMember.getPassword());
         // 실제 사용자 비밀번호 체크가 이루어지는 부분
         // CustomUserDetailsService 에서 만든 loadUserByUsername 이 실행됨
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
+
+        System.out.println("provider 끝남..");
+
         TokenInfo tokenInfo = jwtTokenProvider.generateToken(authentication);
         return tokenInfo;
     }
 
     @Override
     public TokenInfo createTokenForRefreshToken(String refreshToken) {
+
+        System.out.println("mapper get user id");
 
         // refresh token 저장소 확인
         if(refreshToken == null){

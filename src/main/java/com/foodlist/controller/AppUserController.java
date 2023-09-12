@@ -7,17 +7,12 @@ import com.foodlist.service.SecurityService;
 import com.foodlist.util.Message;
 import com.foodlist.util.SuccessCode;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
-import org.apache.el.parser.Token;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.nio.charset.Charset;
 
 @RestController
 @RequiredArgsConstructor
@@ -45,7 +40,7 @@ public class AppUserController {
 
         // body 구성
         Message message = new Message();
-        message.setStatus(SuccessCode.OK.getHttpStatus().value());
+        message.setCode(SuccessCode.OK.getHttpStatus().value());
         message.setMessage("로그인 성공");
         message.setData(tokenInfo);
 
@@ -70,7 +65,7 @@ public class AppUserController {
 
         // body 구성
         Message message = new Message();
-        message.setStatus(SuccessCode.OK.getHttpStatus().value());
+        message.setCode(SuccessCode.OK.getHttpStatus().value());
         message.setMessage("가입 성공");
 
         return new ResponseEntity<>(message, HttpStatus.OK);

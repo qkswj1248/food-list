@@ -1,7 +1,5 @@
 package com.foodlist.controller;
 
-import com.foodlist.error.CustomException;
-import com.foodlist.error.code.SecurityErrorCode;
 import com.foodlist.security.JwtTokenProvider;
 import com.foodlist.security.TokenInfo;
 import com.foodlist.service.SecurityService;
@@ -34,7 +32,7 @@ public class AuthController {
 
         // body 구성
         Message message = new Message();
-        message.setStatus(SuccessCode.OK.getHttpStatus().value());
+        message.setCode(SuccessCode.OK.getHttpStatus().value());
         message.setMessage("토큰 인증 성공");
 
         System.out.println("끝");
@@ -57,7 +55,7 @@ public class AuthController {
 
         // body 구성
         Message message = new Message();
-        message.setStatus(SuccessCode.OK.getHttpStatus().value());
+        message.setCode(SuccessCode.OK.getHttpStatus().value());
         message.setMessage("토큰 재발급");
         message.setData(tokenInfo);
 

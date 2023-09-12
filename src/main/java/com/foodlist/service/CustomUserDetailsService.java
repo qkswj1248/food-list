@@ -1,6 +1,7 @@
 package com.foodlist.service;
 
 import com.foodlist.domain.Member;
+import com.foodlist.error.CustomException;
 import com.foodlist.error.TestException;
 import com.foodlist.error.code.SecurityErrorCode;
 import com.foodlist.mapper.MemberMapper;
@@ -38,13 +39,18 @@ public class CustomUserDetailsService implements UserDetailsService {
     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return memberMapper.findById(username)
+        System.out.println("method : CustomUserDetailsService.loadUserByUsername");
+        UserDetails userDetails = memberMapper.findById(username)
                 .map(this::createUserDetails)
                 /*
                 이 else 는 찾은 user 가 null 일때 실행되는 거야
                 아님 map에서 설정하는게 안됐을때 실행되는 거야?
                  */
-                .orElseThrow(() -> new TestException(SecurityErrorCode.SECURITY_USER_NOT_FOUND, username));
+                .orElseThrow(() -> new CustomException(SecurityErrorCode.SECURITY_USER_NOT_FOUND));
+
+        System.out.println("아아니 뭐가 문젠데!");
+
+        return userDetails;
     }
 
     private UserDetails createUserDetails(Member member){
