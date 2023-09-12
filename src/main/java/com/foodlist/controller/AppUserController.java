@@ -31,7 +31,6 @@ public class AppUserController {
         // 받은 값(id, pw)
         System.out.println("user id : " + loginMember.getId());
         System.out.println("user pw : " + loginMember.getPassword());
-
         // 토큰 발급
         TokenInfo tokenInfo = securityService.createToken(loginMember);
 
