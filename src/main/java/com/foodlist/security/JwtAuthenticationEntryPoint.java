@@ -46,9 +46,12 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
         Map<String, Object> data = new HashMap<>();
+        Map<String, String> error = new HashMap<>();
+        error.put("error", code.name());
+
         data.put("code", code.getCode());
         data.put("message", code.getMessage());
-        data.put("data", code.name());
+        data.put("data", error);
 
         /*
         와아악 에러 해결했다 ObjectMapper writeValue 랑 response.write()
