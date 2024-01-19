@@ -85,10 +85,11 @@ public class JwtTokenProvider {
         System.out.println("authentication(인증).getName() : " + authentication.getName());
         // 결과 : a
 
-        // 현재시간
-        long now = (new Date()).getTime();
         // Access Token 생성
-        Date accessTokenExpiresIn = new Date(now + SECOND);
+        Date accessTokenExpiresIn = new Date(System.currentTimeMillis() + SECOND);
+        System.out.println("access token date : " + accessTokenExpiresIn);
+        Date refreshTokenExpiresIn = new Date(System.currentTimeMillis() + SECOND*100);
+        System.out.println("refresh token date : " + refreshTokenExpiresIn);
 
         // authentication 마다 이름이 다르나? 이 메소드를 부르는 쪽을 봐야할듯
         String accessToken = Jwts.builder()
@@ -102,9 +103,11 @@ public class JwtTokenProvider {
         String refreshToken = Jwts.builder()
                 .setSubject(authentication.getName())
                 .claim("auth", authorities)
-                .setExpiration(new Date(now + SECOND*100))
+                .setExpiration(refreshTokenExpiresIn)
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
+
+        System.out.println("accessToken : " + accessToken);
 
         return TokenInfo.builder()
                 .grantType("Bearer")
@@ -125,6 +128,8 @@ public class JwtTokenProvider {
         // token 에서 payload 부분만 불러내는 메소드인듯?
         // 일단 토큰 복호화하는 부분
         Claims claims = parseClaims(accessToken);
+
+        System.out.println("claims 내용 : " + claims.getExpiration());
 
         if (claims.get("auth") == null){
             log.info("권한 정보가 없는 토큰입니다.");

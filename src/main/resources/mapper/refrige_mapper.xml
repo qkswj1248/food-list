@@ -4,7 +4,21 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.foodlist.mapper.RefrigeMapper">
     <select id="findAll" resultType="com.foodlist.domain.Refrige">
-        select ingredient_id, shelf_life, img, amount
-        from refrige  where member_id = #{id};
+        select name, category, shelf_life, img, amount
+        from refrige re inner join ingredient ing
+        on re.ingredient_id = ing.id
+        where re.member_id = #{id};
     </select>
+
+    <select id="addRefrige" parameterType="com.foodlist.domain.RefrigeInsert">
+        INSERT INTO REFRIGE VALUES (NULL, #{ingredient_id}, #{member_id}, #{shelf_life}, #{memo}, #{img}, #{amount}, #{name})
+    </select>
+
+    <select id="ingFindAll" resultType="com.foodlist.domain.Ingredient">
+        select ing.id, ing.name, ca.name as category, img
+        from ingredient as ing
+        join category as ca
+        on ing.category = ca.id;
+    </select>
+
 </mapper>
